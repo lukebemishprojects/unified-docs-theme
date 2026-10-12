@@ -93,6 +93,10 @@ main {
         @apply -mx-2 w-[calc(100%+(--spacing(4)))]
     }
 
+    picture {
+        @apply block
+    }
+
     :has(:not(article, section, header, footer)) ~ *, :not(article, section, header, footer) ~ * {
         /* Margins get this awful selector. It targets all non-nesting direct children of nesting tags, *except* the very first in the document */
         &, * {

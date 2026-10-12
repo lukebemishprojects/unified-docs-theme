@@ -153,35 +153,50 @@
     > *:first-child::before {
         @apply icon-note inline-icon
     }
-    @apply shared-blockquote text-blue-700
+    >:first-child {
+        @apply text-blue-700
+    }
+    @apply shared-blockquote border-blue-700
 }
 
 @utility shared-blockquote-tip {
     > *:first-child::before {
         @apply icon-tip inline-icon
     }
-    @apply shared-blockquote text-green-700
+    >:first-child {
+        @apply text-green-700
+    }
+    @apply shared-blockquote border-green-700
 }
 
 @utility shared-blockquote-important {
     > *:first-child::before {
         @apply icon-important inline-icon
     }
-    @apply shared-blockquote text-purple-700
+    >:first-child {
+        @apply text-purple-700
+    }
+    @apply shared-blockquote border-purple-700
 }
 
 @utility shared-blockquote-warning {
     > *:first-child::before {
         @apply icon-warning inline-icon
     }
-    @apply shared-blockquote text-amber-700
+    >:first-child {
+        @apply text-amber-700
+    }
+    @apply shared-blockquote border-amber-700
 }
 
 @utility shared-blockquote-caution {
     > *:first-child::before {
         @apply icon-caution inline-icon
     }
-    @apply shared-blockquote text-red-700
+    >:first-child {
+        @apply text-red-700
+    }
+    @apply shared-blockquote border-red-700
 }
 
 @utility shared-table {
