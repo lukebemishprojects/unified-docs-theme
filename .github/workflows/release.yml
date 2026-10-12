@@ -2,6 +2,11 @@ name: Release
 
 on:
   workflow_dispatch:
+    inputs:
+      version:
+        required: true
+        description: 'Gem Version'
+        type: string
 
 jobs:
   build:
@@ -23,6 +28,8 @@ jobs:
     - run: npm ci
     - run: npm run build
     - name: Publish to GPR
+      env:
+        GEM_VERSION: ${{ inputs.version }} 
       run: |
         mkdir -p $HOME/.gem
         touch $HOME/.gem/credentials

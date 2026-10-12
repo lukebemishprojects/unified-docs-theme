@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |spec|
   spec.name          = "unified-docs-theme"
-  spec.version       = "0.1.0"
+  spec.version       = ENV["GEM_VERSION"] || "dev"
   spec.authors       = ["Luke Bemish"]
   spec.email         = ["lukebemish@lukebemish.dev"]
 
