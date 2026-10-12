@@ -9,6 +9,6 @@ Gemfile.lock
 .bundle/
 vendor/
 
-/_sass/unified.css
+/assets/css/style.css
 /assets/css/javadoc.css
 /assets/js/javadoc.js

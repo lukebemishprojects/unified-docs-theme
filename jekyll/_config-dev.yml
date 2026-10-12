@@ -17,10 +17,6 @@ plugins:
   - jekyll-seo-tag
   - jekyll-paginate
 
-sass:
-  quiet_deps: true
-  silence_deprecations: [import]
-
 collections:
   category:
     output: true
