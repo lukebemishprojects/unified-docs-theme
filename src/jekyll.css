@@ -54,7 +54,15 @@ main {
     }
 
     a {
-        @apply shared-link
+        &:not(.alt-link) {
+            @apply shared-link
+        }
+        &.alt-link {
+            @apply text-foreground-disabled;
+            &:hover, &:active {
+                @apply text-foreground-link
+            }
+        }
     }
 
     .footnotes {
@@ -194,6 +202,8 @@ main {
         }
     }
 }
+
+@source inline("text-left text-center text-right text-justify text-start text-end");
 
 nav {
     @media print {

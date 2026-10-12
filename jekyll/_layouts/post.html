@@ -10,9 +10,12 @@ layout: default
 {%capture content%}{% include impl/anchor-headings.html html=content bodySuffix=" " anchorClass="anchor-heading" %}{% endcapture
     %}{{ content }}
 </main>
+{% capture toc_contents -%}{% include impl/toc.html html=content %}{%- endcapture %}
+{%- if toc_contents != blank -%}
 <footer><nav class="on-this-page">
     <h2>
         Contents
     </h2>
-    {% include impl/toc.html html=content %}
+    {{ toc_contents }}
 </nav></footer>
+{%- endif -%}
