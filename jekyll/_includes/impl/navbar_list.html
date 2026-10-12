@@ -11,7 +11,7 @@
     {%- for navpage in include.nav_pages -%}
         {%- if navpage.page -%}
             {%- assign hyperpage = all_pages | where: "path", navpage.page | first -%}
-            {%- if hyperpage.title -%}
+            {%- if hyperpage.title or navpage.title -%}
                 {%- assign page_count = page_count | plus: 1 -%}
             {%- endif -%}
             {%- if hyperpage and hyperpage.url == page.url -%}

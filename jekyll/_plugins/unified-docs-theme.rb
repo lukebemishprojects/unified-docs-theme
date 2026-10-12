@@ -35,7 +35,7 @@ module UnifiedDocsTheme
     class JavadocGenerator < Jekyll::Generator
         def generate(site)
             theme_data = site.config['unified-docs-theme']
-            javadoc_data = theme_data ? theme_data['javadoc'] : {}
+            javadoc_data = theme_data&.dig('javadoc') || {}
             javadoc_data.each do |id, data|
                 Dir.glob(File.join(data['path'], '**/*')) do |path|
                     if File.file?(path)
@@ -50,7 +50,7 @@ module UnifiedDocsTheme
 
     def self.processNavEntries(site, nav_pages, this_jdoc, jdoc_contents)
         theme_data = site.config['unified-docs-theme']
-        javadoc_data = theme_data ? theme_data['javadoc'] : {}
+        javadoc_data = theme_data&.dig('javadoc') || {}
 
         all_pages = site.pages.dup
         for collection in site.collections
@@ -128,7 +128,7 @@ Liquid::Template.register_tag('details', UnifiedDocsTheme::DetailsBlock)
 
 Jekyll::Hooks.register :site, :post_write do |site|
     theme_data = site.config['unified-docs-theme']
-    javadoc_data = theme_data ? theme_data['javadoc'] : {}
+    javadoc_data = theme_data&.dig('javadoc') || {}
     javadoc_data.each do |id, data|
         nav_paths = theme_data ? theme_data['nav_pages'] : nil
         nav_paths = nav_paths ? nav_paths.dup : site.pages.map() do |page|
