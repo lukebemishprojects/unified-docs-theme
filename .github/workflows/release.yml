@@ -16,6 +16,7 @@ jobs:
       packages: write
     env:
       BUNDLE_GEMFILE: ${{ github.workspace }}/jekyll/Gemfile
+      GEM_VERSION: ${{ inputs.version }} 
     steps:
     - uses: actions/checkout@v4
     - uses: actions/setup-node@v4
@@ -37,6 +38,5 @@ jobs:
         gem push --KEY github --host https://rubygems.pkg.github.com/${OWNER} *.gem
       working-directory: ./jekyll
       env:
-        GEM_VERSION: ${{ inputs.version }} 
         GEM_HOST_API_KEY: "Bearer ${{secrets.GITHUB_TOKEN}}"
         OWNER: ${{ github.repository_owner }}
