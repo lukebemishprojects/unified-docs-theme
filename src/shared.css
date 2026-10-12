@@ -197,7 +197,7 @@
     thead tr, tbody tr:nth-child(even) {
         @apply bg-table-odd
     }
-    @apply -mx-2 max-w-[calc(100%+(--spacing(4)))] border-collapse overflow-x-auto block;
+    @apply -mx-2 w-[calc(100%+(--spacing(4)))] border-collapse;
 }
 
 @utility shared-link {
@@ -232,12 +232,13 @@
 }
 
 @utility shared-main {
-    @apply max-w-[85rch] min-w-[min(100dvw,85rch)] px-4 py-12 mx-auto;
+    @apply max-w-[85rch] min-w-[min(100dvw,85rch)] px-4 py-12 mx-auto wrap-anywhere;
     @media print {
         @apply max-w-full mx-0 w-full
     }
     @variant should-hide-navbars {
-        @apply mt-20 pt-4 overflow-y-auto h-[calc(100dvh-var(--spacing)*20)]
+        @apply mt-20 pt-4 overflow-y-auto h-[calc(100dvh-var(--spacing)*20)] hyphens-auto;
+        hyphenate-limit-chars: auto 4 auto;
     }
 }
 

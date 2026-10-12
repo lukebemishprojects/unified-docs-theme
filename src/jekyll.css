@@ -54,7 +54,7 @@ main {
     }
 
     a {
-        &:not(.alt-link) {
+        &:not(:where(.alt-link)) {
             @apply shared-link
         }
         &.alt-link {
@@ -113,6 +113,17 @@ main {
         }
     }
 
+    .overflow-box {
+        @apply -mx-2 w-[calc(100%+(--spacing(4)))] px-2 overflow-x-auto block wrap-normal;
+
+        &:has(> table:nth-child(2):last-child) {
+            /* Since it has _just_ a table, we make the table take the full width */
+            > table {
+                @apply w-[calc(100%)] m-0 outline-0;
+            }
+        }
+    }
+
     details {
         @apply -mx-2 w-[calc(100%+(--spacing(4)))];
         summary {
@@ -138,12 +149,12 @@ main {
             }
 
             &:has(> table:nth-child(2):last-child) {
-                /* Since it has _just_ a table, we make the table take the fully width */
+                /* Since it has _just_ a table, we make the table take the full width */
                 > table {
-                    @apply w-[calc(100%)] m-0 outline-0 table
+                    @apply w-[calc(100%)] m-0 outline-0;
                 }
                 &::details-content {
-                    @apply overflow-x-auto p-0 border-0;
+                    @apply overflow-x-auto p-0 border-0 wrap-normal;
                 }
             }
         }

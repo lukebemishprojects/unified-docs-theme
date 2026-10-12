@@ -25,6 +25,15 @@ And yet more content.
 
 Text can be **bold** or *italic* or ~~strikethrough~~ or `code`.
 
+<div class="overflow-box" markdown="block">
+
+| Column A    | Column B    | Column C    | Column D    | Column E    |
+| ----------- | ----------- | ----------- | ----------- | ----------- |
+| Entry 1     | Entry 2     | Entry 3     | Entry 4     | Entry 5     |
+| Entry 6     | Entry 7     | Entry 8     | Entry 9     | Entry 10    |
+
+</div>
+
 ```
 We can have code blocks!
 ```
