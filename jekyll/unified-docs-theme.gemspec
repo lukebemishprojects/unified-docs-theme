@@ -2,7 +2,11 @@
 
 Gem::Specification.new do |spec|
   spec.name          = "unified-docs-theme"
-  spec.version       = ENV["GEM_VERSION"]
+  if ENV["CI"]&.downcase == 'true'
+    spec.version       = ENV["GEM_VERSION"]
+  else
+    spec.version       = "0.1.0"
+  end
   spec.authors       = ["Luke Bemish"]
   spec.email         = ["lukebemish@lukebemish.dev"]
 
