@@ -7,12 +7,12 @@ layout: default
     <h1>{{ page.title | escape }}</h1>
     {% endif %}
 </header>
-{%capture content%}{% include anchor-headings.html html=content bodySuffix=" " anchorClass="anchor-heading" %}{% endcapture
+{%capture content%}{% include impl/anchor-headings.html html=content bodySuffix=" " anchorClass="anchor-heading" %}{% endcapture
     %}{{ content }}
 </main>
 <footer><nav class="on-this-page">
     <h2>
         Contents
     </h2>
-    {% include toc.html html=content %}
+    {% include impl/toc.html html=content %}
 </nav></footer>

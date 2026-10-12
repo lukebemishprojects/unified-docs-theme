@@ -80,7 +80,7 @@ main {
     @apply shared-headings;
     @apply shared-lists;
 
-    hr {
+    hr, img {
         @apply -mx-2 w-[calc(100%+(--spacing(4)))]
     }
 
@@ -102,10 +102,6 @@ main {
                 }
             }
         }
-    }
-
-    article, section, header, footer {
-        display: contents;
     }
 
     details {
@@ -180,6 +176,22 @@ main {
         }
         @apply text-page-foreground
     }
+
+    .column-center {
+        @apply mx-auto max-w-fit
+    }
+
+    .column-page {
+        @variant not-should-hide-navbars {
+            @apply block -mx-[calc(var(--spacing)*8+25rch)] px-4
+        }
+    }
+
+    .column-full {
+        @variant not-should-hide-navbars {
+            @apply block -mx-[calc(var(--spacing)*4+(100dvw-85rch)/2)] px-4
+        }
+    }
 }
 
 nav {
@@ -187,15 +199,25 @@ nav {
         @apply hidden
     }
     &.on-this-page {
-        @apply fixed right-[max((100%-85rch)/2-25rch-var(--spacing)*4,0px)] top-12 w-[25rch] text-sm text-foreground-disabled;
+        @apply fixed right-[max((100%-85rch)/2-25rch-var(--spacing)*4,0px)] top-11 w-[25rch] text-sm text-foreground-disabled z-30;
         @variant should-hide-navbars {
             @apply hidden
         }
+        @variant not-should-hide-navbars {
+            @apply p-1;
+            background-color: rgb(from var(--color-page-background) r g b / calc(alpha * 0.8));
+            box-shadow: 0 0 calc(var(--spacing)*2) calc(var(--spacing)*2) rgb(from var(--color-page-background) r g b / calc(alpha * 0.8));
+        }
     }
     &.site-nav {
-        @apply fixed right-[max(50%+85rch/2+var(--spacing)*4,25rch)] top-12 w-[25rch] text-sm text-foreground-disabled;
+        @apply fixed right-[max(50%+85rch/2+var(--spacing)*4,25rch)] top-11 w-[25rch] text-sm text-foreground-disabled z-20;
         @variant should-hide-navbars {
-            @apply hidden
+            @apply hidden;
+        }
+        @variant not-should-hide-navbars {
+            @apply p-1;
+            background-color: rgb(from var(--color-page-background) r g b / calc(alpha * 0.8));
+            box-shadow: 0 0 calc(var(--spacing)*2) calc(var(--spacing)*2) rgb(from var(--color-page-background) r g b / calc(alpha * 0.8));
         }
     }
 
@@ -246,10 +268,10 @@ nav {
     :is(#navbars-toggle:checked, :has(#navbars-toggle:checked)) ~ * {
         &:is(nav), nav {
             &.site-nav {
-                @apply block fixed bg-page-background left-0 px-4 top-20 py-4 h-[calc(50dvh)] w-dvw overflow-y-auto z-10 border-b border-table-border
+                @apply block fixed bg-page-background left-0 px-4 top-20 py-4 h-[calc(50dvh)] w-dvw overflow-y-auto border-b border-table-border
             }
             &.on-this-page {
-                @apply block fixed bg-table-odd left-0 px-4 top-[calc(50dvh+--spacing(20))] py-4 h-[calc(50dvh-var(--spacing)*20)] w-dvw overflow-y-auto z-20
+                @apply block fixed bg-table-odd left-0 px-4 top-[calc(50dvh+--spacing(20))] py-4 h-[calc(50dvh-var(--spacing)*20)] w-dvw overflow-y-auto
             }
             li {
                 @apply py-1.5;

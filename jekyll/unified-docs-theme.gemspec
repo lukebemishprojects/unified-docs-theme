@@ -12,12 +12,13 @@ Gem::Specification.new do |spec|
 
   spec.files         = `git ls-files -z`.split("\x0")
     .select { |f| f.match(%r!^(_data|_layouts|_includes|LICENSE|README|_config\.yml)!i) } +
-    `find assets -type f -print0`.split("\x0") +
-    `find _sass -type f -print0`.split("\x0")
+    `find ./assets -type f -print0`.split("\x0") +
+    `find ./_sass -type f -print0`.split("\x0")
 
   spec.add_runtime_dependency "jekyll", "~> 4.4"
   spec.add_runtime_dependency "jekyll-feed", "~> 0.9"
   spec.add_runtime_dependency "jekyll-seo-tag", "~> 2.1"
+  spec.add_runtime_dependency "jekyll-paginate", "~> 1.1"
 
   spec.add_development_dependency "bundler"
 

@@ -1,0 +1,22 @@
+---
+layout: page
+title: Home
+---
+
+<p>Test home page content goes here!</p>
+
+{%- include post-list.html posts=paginator.posts -%}
+
+<nav class="column-center" role="navigation">
+    {% if paginator.previous_page %}
+        {% if paginator.page == 2 %}
+            <a class="older-posts" href={{ "/" | prepend: site.baseurl }}> &larr;</a>
+        {% else %}
+            <a class="older-posts" href={{ "/page" | prepend: site.baseurl | append: paginator.previous_page }}> &larr;</a>
+        {% endif %}
+    {% endif %}
+    <span class="page-number">Page {{ paginator.page }} of {{ paginator.total_pages }}</span>
+    {% if paginator.next_page %}
+        <a class="newer-posts" href={{ "/page" | prepend: site.baseurl | append: paginator.next_page }}>&rarr; </a>
+    {% endif %}
+</nav>

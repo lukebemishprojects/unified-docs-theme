@@ -10,9 +10,12 @@ description: >
 
 theme: unified-docs-theme
 
+paginate: 1
+
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
+  - jekyll-paginate
 
 sass:
   quiet_deps: true
@@ -25,7 +28,7 @@ collections:
 
 unified-docs-theme:
   nav_pages:
-    - page: index.md
+    - page: index.html
       dropdown: true
       children:
         - title: Unclickable Child

@@ -77,7 +77,7 @@
         <li>
 
         {%- if navpage.children and navpage.children.size > 0 and navpage.dropdown -%}
-        {%- capture contains_current_page -%}{% include navbar/contains_current.html nav_pages=navpage.children %}{%- endcapture -%}
+        {%- capture contains_current_page -%}{% include impl/navbar/contains_current.html nav_pages=navpage.children %}{%- endcapture -%}
         <details {%- if contains_current_page contains "T" %} open{% endif %}><summary>
         {%- endif -%}
 
@@ -90,7 +90,7 @@
 
         {%- if navpage.children and navpage.children.size > 0 -%}
             {%- if navpage.dropdown -%}</summary>{%- endif -%}
-            {%- include navbar_list.html nav_pages=navpage.children -%}
+            {%- include impl/navbar_list.html nav_pages=navpage.children -%}
             {%- if navpage.dropdown -%}</details>{%- endif -%}
         {%- endif -%}
         </li>

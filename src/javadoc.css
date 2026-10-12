@@ -67,9 +67,14 @@ nav {
                 @apply hidden
             }
         }
-        @apply fixed left-[max((100%-85rch)/2-30ch-1rem,0px)] top-12 w-[30ch] text-sm text-foreground-disabled;
+        @apply fixed left-[max((100%-85rch)/2-25rch-1rem,0px)] top-11 w-[25rch] text-sm text-foreground-disabled;
         @variant should-hide-navbars {
             @apply hidden
+        }
+        @variant not-should-hide-navbars {
+            @apply p-1;
+            background-color: rgb(from var(--color-page-background) r g b / calc(alpha * 0.8));
+            box-shadow: 0 0 calc(var(--spacing)*2) calc(var(--spacing)*2) rgb(from var(--color-page-background) r g b / calc(alpha * 0.8));
         }
     }
     &.toc {
@@ -96,9 +101,14 @@ nav {
                 @apply pl-4
             }
         }
-        @apply fixed right-[max((100%-85rch)/2-30ch-1rem,0px)] top-12 w-[30ch] text-sm text-foreground-disabled;
+        @apply fixed right-[max((100%-85rch)/2-25rch-1rem,0px)] top-11 w-[25rch] text-sm text-foreground-disabled;
         @variant should-hide-navbars {
             @apply hidden
+        }
+        @variant not-should-hide-navbars {
+            @apply p-1;
+            background-color: rgb(from var(--color-page-background) r g b / calc(alpha * 0.8));
+            box-shadow: 0 0 calc(var(--spacing)*2) calc(var(--spacing)*2) rgb(from var(--color-page-background) r g b / calc(alpha * 0.8));
         }
     }
 }
@@ -153,7 +163,7 @@ div:has(> #page-search-input) {
         @apply w-fit inline-block
     }
     #page-search-input {
-        @apply outline outline-table-border w-[min(100%,30ch)] px-1
+        @apply outline outline-table-border w-[min(100%,25rch)] px-1
     }
     #search-modules {
         @apply px-2 border border-table-border bg-table-odd

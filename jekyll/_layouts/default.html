@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="{{ page.lang | default: site.lang | default: 'en' }}">
-    {%- include head.html -%}
+    {%- include impl/head.html -%}
     <body>
-        {%- include header.html -%}
-        {%capture content%}{% include alert-notes.html html=content bodySuffix=" " %}{% endcapture
+        {%- include impl/header.html -%}
+        {%capture content%}{% include impl/alert-notes.html html=content bodySuffix=" " %}{% endcapture
             %}{{ content }}
     </body>
 </html>

@@ -22,7 +22,7 @@
 {%- if _1_page_title %}
 {%- if _1_page_url == page.url -%}T{%- endif -%}
 {%- if navpage.children and navpage.children.size > 0 -%}
-    {%- include navbar/contains_current.html nav_pages=navpage.children -%}
+    {%- include impl/navbar/contains_current.html nav_pages=navpage.children -%}
 {%- endif -%}
 {%- endif -%}
 {%- endfor -%}
