@@ -97,14 +97,14 @@ main {
         /* Margins get this awful selector. It targets all non-nesting direct children of nesting tags, *except* the very first in the document */
         &, * {
             :is(main, article, section, header, footer) > &:not(article, section, header, footer) {
-                @apply mt-2;
+                @apply mt-4;
                 @apply shared-headings-margins;
                 &:where(h1) {
                     @apply mt-8
                 }
             }
             details > &:not(article, section, header, footer, summary) {
-                @apply mt-2;
+                @apply mt-4;
                 @apply shared-headings-margins;
                 &:where(h1) {
                     @apply mt-8
@@ -132,6 +132,9 @@ main {
         &[open] {
             &::details-content {
                 @apply p-[calc(--spacing(2)-1px)] pt-0 border border-table-border
+            }
+            > :nth-child(2) {
+                @apply mt-2
             }
             > :has(pre), > :has(table), > pre, > table {
                 &:nth-child(2) {
