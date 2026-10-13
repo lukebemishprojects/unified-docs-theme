@@ -78,6 +78,10 @@ We can insert horizontal rules:
 
 ------------------------------------------
 
+```
+This is a code block with one particular line that just keeps going and going and going and going and going, in order to test both that overflow works and that the "copy" does not "stick" to the code block when it overflows.
+```
+
 We can have lists:
 
 * A

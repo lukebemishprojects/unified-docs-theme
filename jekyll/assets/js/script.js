@@ -1,8 +1,8 @@
 (() => {
     document.querySelectorAll("main pre").forEach(element => {
         const contents = element.textContent;
-        element.insertAdjacentHTML('afterbegin', '<button class="copy"><span>Copy</span></button>');
-        const button = element.querySelector("button");
+        element.insertAdjacentHTML('beforebegin', '<button class="copy"><span>Copy</span></button>');
+        const button = element.previousElementSibling;
         const buttonCopySpan = button.querySelector("span");
         button.onclick = async () => {
             await navigator.clipboard.writeText(contents);

@@ -169,7 +169,8 @@ main {
 
     @apply shared-main;
 
-    pre {
+    div:has(> pre) {
+        @apply relative;
         .copy {
             &::after {
                 @apply icon-copy inline-icon mr-0 ml-[0.3em] mt-[calc((1lh-1.5cap)/2)];
@@ -180,14 +181,15 @@ main {
             &:hover > *:first-child {
                 @apply opacity-100
             }
-            @apply absolute top-0 right-0 p-2 flex flex-row font-normal text-page-foreground font-sans;
+            @apply absolute top-0 -right-2 p-2 flex flex-row font-normal text-page-foreground font-sans;
             @media print {
                 @apply hidden
             }
         }
-        @apply border border-table-border relative bg-table-odd p-2 overflow-x-auto -mx-2 w-[calc(100%+(--spacing(4)))];
+    }
+    pre {
+        @apply border border-table-border bg-table-odd p-2 overflow-x-auto -mx-2 w-[calc(100%+(--spacing(4)))];
         &.highlight {
-            /* Needed for specificity, to override rouge */
             @apply bg-table-odd
         }
     }
