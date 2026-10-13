@@ -281,6 +281,9 @@ nav {
             @apply w-full h-0 border-t border-page-foreground block my-2
         }
     }
+    hr {
+        @apply my-2
+    }
 }
 
 #navbars-toggle {
@@ -296,10 +299,10 @@ nav {
 }
 
 @variant should-hide-navbars {
-    :is(#navbars-toggle:checked, :has(#navbars-toggle:checked)) ~ * {
-        &:is(nav), nav {
+    body:has(#navbars-toggle:checked) {
+        nav {
             &.site-nav {
-                @apply block fixed bg-page-background left-0 px-4 top-20 py-4 h-[calc(50dvh)] w-dvw overflow-y-auto border-b border-table-border
+                @apply block fixed bg-page-background left-0 px-4 top-20 py-4 h-[calc(100dvh-var(--spacing)*20)] w-dvw overflow-y-auto border-b border-table-border
             }
             &.on-this-page {
                 @apply block fixed bg-table-odd left-0 px-4 top-[calc(50dvh+--spacing(20))] py-4 h-[calc(50dvh-var(--spacing)*20)] w-dvw overflow-y-auto
@@ -317,6 +320,14 @@ nav {
             }
             h2::after {
                 @apply mb-1.5 mt-3
+            }
+            > * {
+                @apply my-3
+            }
+        }
+        &:has(.on-this-page) {
+            nav.site-nav {
+                @apply h-[calc(50dvh)]
             }
         }
     }

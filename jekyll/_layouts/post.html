@@ -14,12 +14,12 @@ layout: default
 {%- include custom-footer.html -%}
 </footer>
 </main>
+{% capture toc_contents -%}{% include impl/toc.html html=content %}{%- endcapture %}
+{%- if toc_contents != blank -%}
 <footer><nav class="on-this-page">
-    {% capture toc_contents -%}{% include impl/toc.html html=content %}{%- endcapture %}
-    {%- if toc_contents != blank -%}
     <h2>
         Contents
     </h2>
     {{ toc_contents }}
-    {%- endif -%}
 </nav></footer>
+{%- endif -%}
