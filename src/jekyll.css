@@ -213,7 +213,7 @@ main {
     .column-page {
         @variant not-should-hide-navbars {
             @media not print {
-                @apply block -mx-[calc(var(--spacing)*8+25rch)] px-4
+                @apply block -mx-[min(var(--spacing)*8+25*var(--inexact-ch),var(--spacing)*4+(100dvw-85*var(--inexact-ch))/2)] px-4
             }
         }
     }
@@ -221,7 +221,7 @@ main {
     .column-full {
         @variant not-should-hide-navbars {
             @media not print {
-                @apply block -mx-[calc(var(--spacing)*4+(100dvw-85rch)/2)] px-4
+                @apply block -mx-[calc(var(--spacing)*4+(100dvw-85*var(--inexact-ch))/2)] px-4
             }
         }
     }
@@ -234,7 +234,7 @@ nav {
         @apply hidden
     }
     &.on-this-page {
-        @apply fixed right-[max((100%-85rch)/2-25rch-var(--spacing)*4,0px)] top-11 w-[25rch] text-sm text-foreground-disabled z-30;
+        @apply fixed right-[max((100dvw-85*var(--inexact-ch))/2-25*var(--inexact-ch)-var(--spacing)*4,0px)] top-11 w-[calc(var(--inexact-ch)*25)] text-sm text-foreground-disabled z-30 box-border;
         @variant should-hide-navbars {
             @apply hidden
         }
@@ -245,7 +245,7 @@ nav {
         }
     }
     &.site-nav {
-        @apply fixed right-[max(50%+85rch/2+var(--spacing)*4,25rch)] top-11 w-[25rch] text-sm text-foreground-disabled z-20;
+        @apply fixed right-[min(50dvw+85*var(--inexact-ch)/2+var(--spacing)*4,100dvw-25*var(--inexact-ch))] top-11 w-[calc(var(--inexact-ch)*25)] text-sm text-foreground-disabled z-20 box-border;
         @variant should-hide-navbars {
             @apply hidden;
         }

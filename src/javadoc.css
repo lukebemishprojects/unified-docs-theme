@@ -67,7 +67,7 @@ nav {
                 @apply hidden
             }
         }
-        @apply fixed left-[max((100%-85rch)/2-25rch-1rem,0px)] top-11 w-[25rch] text-sm text-foreground-disabled;
+        @apply fixed left-[max((100%-85*var(--inexact-ch))/2-25*var(--inexact-ch)-1rem,0px)] top-11 w-[calc(var(--inexact-ch)*25)] text-sm text-foreground-disabled;
         @variant should-hide-navbars {
             @apply hidden
         }
@@ -101,7 +101,7 @@ nav {
                 @apply pl-4
             }
         }
-        @apply fixed right-[max((100%-85rch)/2-25rch-1rem,0px)] top-11 w-[25rch] text-sm text-foreground-disabled;
+        @apply fixed right-[max((100%-85*var(--inexact-ch))/2-25*var(--inexact-ch)-1rem,0px)] top-11 w-[calc(var(--inexact-ch)*25)] text-sm text-foreground-disabled;
         @variant should-hide-navbars {
             @apply hidden
         }
@@ -168,7 +168,7 @@ div:has(> #page-search-input) {
         @apply w-fit inline-block
     }
     #page-search-input {
-        @apply outline outline-table-border w-[min(100%,25rch)] px-1
+        @apply outline outline-table-border w-[min(100%,25*var(--inexact-ch))] px-1
     }
     #search-modules {
         @apply px-2 border border-table-border bg-table-odd
