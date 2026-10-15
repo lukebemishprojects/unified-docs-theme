@@ -7,6 +7,15 @@
             font-size: 12px;
         }
         --inexact-ch: 0.56rem; /* deal with the fact that sans-serif fonts can have differing widths, and media queries can't work with that */
+
+        container-type: inline-size;
+        @supports (container-type: scroll-state) {
+            & {
+                container-type: scroll-state inline-size;
+            }
+        }
+        container-name: root;
+        --root-width: 100%;
     }
 }
 
@@ -248,13 +257,30 @@
 }
 
 @utility shared-main {
-    @apply w-[min(100dvw,var(--inexact-ch)*85)] px-4 py-12 mx-auto wrap-anywhere box-border;
+    @apply w-[min(100%,var(--inexact-ch)*85)] px-4 py-12 mx-auto wrap-anywhere box-border;
     @variant should-hide-navbars {
-        @apply mt-20 pt-4 overflow-y-auto h-[calc(100dvh-var(--spacing)*20)] hyphens-auto;
+        @apply mt-16 pt-4 hyphens-auto;
         hyphenate-limit-chars: auto 4 auto;
     }
     @media print {
         @apply w-full max-w-full px-0 py-0 mt-0
+    }
+}
+
+@utility shared-main-no-navbars {
+    @variant should-hide-navbars {
+        @apply mt-0 pt-12;
+    }
+}
+
+@utility gone-on-parent-scroll-down {
+    transition: translate 0.25s;
+    translate: 0 0;
+    .scrolling-downwards & {
+        translate: 0 -100%;
+    }
+    @container scroll-state(scrolled: bottom) {
+        translate: 0 -100%;
     }
 }
 

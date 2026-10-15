@@ -12,6 +12,32 @@
                     document.getElementById('navbars-toggle').checked = false;
                 });
             });
+
+            if (!CSS.supports("(container-type: scroll-state)")) {
+                const element = document.querySelector("html");
+                let lastKnownScrollPosition = 0;
+                let ticking = false;
+                window.addEventListener('scroll', () => {
+                    const currentScrollY = window.scrollY;
+
+                    if (!ticking) {
+                        window.requestAnimationFrame(() => {
+                            if (currentScrollY > lastKnownScrollPosition) {
+                                // Scrolling DOWN
+                                element.classList.add("scrolling-downwards");
+                            } else {
+                                // Scrolling UP (or static)
+                                element.classList.remove("scrolling-downwards");
+                            }
+
+                            lastKnownScrollPosition = currentScrollY;
+                            ticking = false;
+                        });
+
+                        ticking = true;
+                    }
+                });
+            }
         }
     };
     if (document.readyState !== 'loading') {

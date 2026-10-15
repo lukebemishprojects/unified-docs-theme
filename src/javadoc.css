@@ -117,11 +117,14 @@ nav {
     @variant not-should-hide-navbars {
         @apply hidden
     }
+    &:not(:checked):not(:focus-within) {
+        @apply gone-on-parent-scroll-down
+    }
     @variant should-hide-navbars {
         &::before {
-            @apply icon-hamburger w-12 h-12
+            @apply icon-hamburger w-8 h-8
         }
-        @apply appearance-none bg-table-border w-dvw h-20 fixed top-0 left-0 p-4 z-10
+        @apply appearance-none bg-table-border w-full h-16 fixed top-0 left-0 p-4 z-10
     }
 }
 
@@ -129,10 +132,10 @@ nav {
     body:has(#navbars-toggle:checked) {
         nav {
             &:has(.top-nav) {
-                @apply block fixed bg-page-background left-0 px-4 top-20 py-4 h-[calc(100dvh-var(--spacing)*20)] w-dvw overflow-y-auto z-10 border-b border-table-border
+                @apply block fixed bg-page-background left-0 px-4 top-16 py-4 h-[calc(100dvh-var(--spacing)*16)] w-full overflow-y-auto z-10 border-b border-table-border
             }
             &.toc {
-                @apply block fixed bg-table-odd left-0 px-4 top-[calc(50dvh+--spacing(20))] py-4 h-[calc(50dvh-var(--spacing)*20)] w-dvw overflow-y-auto z-20
+                @apply block fixed bg-table-odd left-0 px-4 top-[calc(50dvh+--spacing(16))] py-4 h-[calc(50dvh-var(--spacing)*16)] w-full overflow-y-auto z-20
             }
             li {
                 @apply py-1.5;
@@ -141,7 +144,7 @@ nav {
                 }
             }
             * + ul, * + ol {
-                &:not(.toc > &) {
+                &:not(.toc > &):not(.nav-content > ul:first-of-type) {
                     @apply pt-1.5
                 }
             }

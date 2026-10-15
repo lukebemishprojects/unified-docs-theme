@@ -211,17 +211,17 @@ main {
     }
 
     .column-page {
-        @variant not-should-hide-navbars {
+        @container root (min-width: 0) {
             @media not print {
-                @apply block -mx-[min(var(--spacing)*8+25*var(--inexact-ch),var(--spacing)*4+(100dvw-85*var(--inexact-ch))/2)] px-4
+                @apply block -mx-[min(var(--spacing)*8+25*var(--inexact-ch),var(--spacing)*4+(cqw-85*var(--inexact-ch))/2)] px-4
             }
         }
     }
 
     .column-full {
-        @variant not-should-hide-navbars {
+        @container root (min-width: 0) {
             @media not print {
-                @apply block -mx-[calc(var(--spacing)*4+(100dvw-85*var(--inexact-ch))/2)] px-4
+                @apply block -mx-[calc(var(--spacing)*4+(100cqw-85*var(--inexact-ch))/2)] px-4
             }
         }
     }
@@ -234,7 +234,7 @@ nav {
         @apply hidden
     }
     &.on-this-page {
-        @apply fixed right-[max((100dvw-85*var(--inexact-ch))/2-25*var(--inexact-ch)-var(--spacing)*4,0px)] top-11 w-[calc(var(--inexact-ch)*25)] text-sm text-foreground-disabled z-30 box-border;
+        @apply fixed right-[max((100%-85*var(--inexact-ch))/2-25*var(--inexact-ch)-var(--spacing)*4,0px)] top-11 w-[calc(var(--inexact-ch)*25)] text-sm text-foreground-disabled z-30 box-border;
         @variant should-hide-navbars {
             @apply hidden
         }
@@ -245,7 +245,7 @@ nav {
         }
     }
     &.site-nav {
-        @apply fixed right-[min(50dvw+85*var(--inexact-ch)/2+var(--spacing)*4,100dvw-25*var(--inexact-ch))] top-11 w-[calc(var(--inexact-ch)*25)] text-sm text-foreground-disabled z-20 box-border;
+        @apply fixed right-[min(50%+85*var(--inexact-ch)/2+var(--spacing)*4,100%-25*var(--inexact-ch))] top-11 w-[calc(var(--inexact-ch)*25)] text-sm text-foreground-disabled z-20 box-border;
         @variant should-hide-navbars {
             @apply hidden;
         }
@@ -291,47 +291,68 @@ nav {
 }
 
 #navbars-toggle {
-    @variant not-should-hide-navbars {
-        @apply hidden
+    &:not(:checked):not(:focus-within) {
+        @apply gone-on-parent-scroll-down
     }
-    @variant should-hide-navbars {
-        &::before {
-            @apply icon-hamburger w-12 h-12
+    @apply hidden
+}
+
+
+body {
+    &:not(:has(.site-nav > *, .on-this-page > *)) {
+        main {
+            @apply shared-main-no-navbars
         }
-        @apply appearance-none bg-table-border w-dvw h-20 fixed top-0 left-0 p-4 z-10
     }
 }
 
 @variant should-hide-navbars {
-    body:has(#navbars-toggle:checked) {
-        nav {
-            &.site-nav {
-                @apply block fixed bg-page-background left-0 px-4 top-20 py-4 h-[calc(100dvh-var(--spacing)*20)] w-dvw overflow-y-auto border-b border-table-border
-            }
-            &.on-this-page {
-                @apply block fixed bg-table-odd left-0 px-4 top-[calc(50dvh+--spacing(20))] py-4 h-[calc(50dvh-var(--spacing)*20)] w-dvw overflow-y-auto
-            }
-            li {
-                @apply py-1.5;
-                &:last-child {
-                    @apply pb-0
+    body:has(.site-nav > *, .on-this-page > *) {
+        #navbars-toggle {
+            @variant should-hide-navbars {
+                &::before {
+                    @apply icon-hamburger w-8 h-8
                 }
-            }
-            * + ul, * + ol {
-                &:not(.on-this-page > &) {
-                    @apply pt-1.5
-                }
-            }
-            h2::after {
-                @apply mb-1.5 mt-3
-            }
-            > * {
-                @apply my-3
+                @apply block appearance-none bg-table-border w-full h-16 fixed top-0 left-0 p-4 z-10
             }
         }
-        &:has(.on-this-page) {
-            nav.site-nav {
-                @apply h-[calc(50dvh)]
+
+        &:has(#navbars-toggle:checked) {
+            nav {
+                &.site-nav {
+                    @apply block fixed bg-page-background left-0 px-4 top-16 py-4 h-[calc(100dvh-var(--spacing)*16)] w-full overflow-y-auto border-b border-table-border
+                }
+                &.on-this-page {
+                    @apply block fixed bg-table-odd left-0 px-4 top-[calc(50dvh+--spacing(16))] py-4 h-[calc(50dvh-var(--spacing)*16)] w-full overflow-y-auto
+                }
+                li {
+                    @apply py-1.5;
+                    &:last-child {
+                        @apply pb-0
+                    }
+                }
+                * + ul, * + ol {
+                    &:not(.on-this-page > &) {
+                        @apply pt-1.5
+                    }
+                }
+                h2::after {
+                    @apply mb-1.5 mt-3
+                }
+                > * {
+                    @apply my-3;
+                    &:first-child {
+                        @apply mt-0
+                    }
+                    &:last-child {
+                        @apply mb-0
+                    }
+                }
+            }
+            &:has(.on-this-page) {
+                nav.site-nav {
+                    @apply h-[calc(50dvh)]
+                }
             }
         }
     }
