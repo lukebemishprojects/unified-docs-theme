@@ -29,23 +29,23 @@
         {% assign _strip_prefix = false %}
         {% assign _beforeContent = '' %}
         {% if _prefix == '[!NOTE' %}
-            {% capture _html_class %}{{ _html_class }} alert-note{% endcapture %}
+            {% capture _html_class %}{{ _html_class }} alert alert-note{% endcapture %}
             {% assign _beforeContent = '<p><strong>Note</strong></p>' %}
             {% assign _strip_prefix = true %}
         {% elsif _prefix == '[!TIP' %}
-            {% capture _html_class %}{{ _html_class }} alert-tip{% endcapture %}
+            {% capture _html_class %}{{ _html_class }} alert alert-tip{% endcapture %}
             {% assign _beforeContent = '<p><strong>Tip</strong></p>' %}
             {% assign _strip_prefix = true %}
         {% elsif _prefix == '[!IMPORTANT' %}
-            {% capture _html_class %}{{ _html_class }} alert-important{% endcapture %}
+            {% capture _html_class %}{{ _html_class }} alert alert-important{% endcapture %}
             {% assign _beforeContent = '<p><strong>Important</strong></p>' %}
             {% assign _strip_prefix = true %}
         {% elsif _prefix == '[!WARNING' %}
-            {% capture _html_class %}{{ _html_class }} alert-warning{% endcapture %}
+            {% capture _html_class %}{{ _html_class }} alert alert-warning{% endcapture %}
             {% assign _beforeContent = '<p><strong>Warning</strong></p>' %}
             {% assign _strip_prefix = true %}
         {% elsif _prefix == '[!CAUTION' %}
-            {% capture _html_class %}{{ _html_class }} alert-caution{% endcapture %}
+            {% capture _html_class %}{{ _html_class }} alert alert-caution{% endcapture %}
             {% assign _beforeContent = '<p><strong>Caution</strong></p>' %}
             {% assign _strip_prefix = true %}
         {% endif %}
@@ -60,6 +60,6 @@
         {% assign blockquote = _closingtagparts | first %}
         {% assign _after_blockquote = _closingtagparts | shift | join: "</blockquote>" %}
 
-        {% capture edited_notes %}{{ edited_notes }}<{% if _strip_prefix %}aside{% else %}blockquote{% endif %}{{ _beforeClasses }}class="{{ _html_class | strip }}"{{ _afterClasses }}>{{ _beforeContent }}{{ blockquote }}</{% if _strip_prefix %}aside{% else %}blockquote{% endif %}>{{ _after_blockquote }}{% endcapture %}
+        {% capture edited_notes %}{{ edited_notes }}<{% if _strip_prefix %}div role="note"{% else %}blockquote{% endif %}{{ _beforeClasses }}class="{{ _html_class | strip }}"{{ _afterClasses }}>{{ _beforeContent }}{{ blockquote }}</{% if _strip_prefix %}div{% else %}blockquote{% endif %}>{{ _after_blockquote }}{% endcapture %}
     {% endfor %}
 {% endcapture %}{% assign alertNotesWorkspace = '' %}{{ edited_notes | strip }}
