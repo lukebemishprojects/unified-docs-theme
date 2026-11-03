@@ -97,17 +97,17 @@ main {
         @apply block
     }
 
-    :has(:not(article, section, header, footer)) ~ *, :not(article, section, header, footer) ~ * {
+    :has(:not(article, section, header, footer, .content-block)) ~ *, :not(article, section, header, footer, .content-block) ~ * {
         /* Margins get this awful selector. It targets all non-nesting direct children of nesting tags, *except* the very first in the document */
         &, * {
-            :is(main, article, section, header, footer) > &:not(article, section, header, footer) {
+            :is(main, article, section, header, footer, .content-block) > &:not(article, section, header, footer, .content-block) {
                 @apply mt-4;
                 @apply shared-headings-margins;
                 &:where(h1) {
                     @apply mt-8
                 }
             }
-            details > &:not(article, section, header, footer, summary) {
+            details > &:not(article, section, header, footer, summary, .content-block) {
                 @apply mt-4;
                 @apply shared-headings-margins;
                 &:where(h1) {
