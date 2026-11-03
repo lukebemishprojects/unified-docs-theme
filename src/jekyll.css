@@ -25,7 +25,7 @@ main {
         @apply text-sm text-foreground-disabled
     }
 
-    blockquote, aside, .alert {
+    blockquote, aside {
         @apply shared-blockquote
     }
 
