@@ -3,7 +3,6 @@
     {%- include impl/head.html -%}
     <body>
         {%- include impl/header.html -%}
-        {%capture content%}{% include impl/alert-notes.html html=content bodySuffix=" " %}{% endcapture
-            %}{{ content }}
+        {%- include process-content.html content=content -%}
     </body>
 </html>

@@ -289,7 +289,7 @@ p:has(+ #page-search-link) {
         @apply px-[0.125em]
     }
 
-    blockquote {
+    blockquote, aside {
         @apply shared-blockquote
     }
 

@@ -25,27 +25,27 @@ main {
         @apply text-sm text-foreground-disabled
     }
 
-    blockquote {
+    blockquote, aside {
         @apply shared-blockquote
     }
 
-    blockquote.alert-note {
+    aside.alert-note {
         @apply shared-blockquote-note
     }
 
-    blockquote.alert-tip {
+    aside.alert-tip {
         @apply shared-blockquote-tip
     }
 
-    blockquote.alert-important {
+    aside.alert-important {
         @apply shared-blockquote-important
     }
 
-    blockquote.alert-warning {
+    aside.alert-warning {
         @apply shared-blockquote-warning
     }
 
-    blockquote.alert-caution {
+    aside.alert-caution {
         @apply shared-blockquote-caution
     }
 

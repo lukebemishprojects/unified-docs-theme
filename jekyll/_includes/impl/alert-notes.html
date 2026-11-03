@@ -56,6 +56,10 @@
             {% capture blockquote %}{{ _parts[0] }}{{ _parts | shift | join: _prefix | lstrip }}{% endcapture %}
         {% endif %}
 
-        {% capture edited_notes %}{{ edited_notes }}<blockquote{{ _beforeClasses }}class="{{ _html_class | strip }}"{{ _afterClasses }}>{{ _beforeContent }}{{ blockquote }}{% endcapture %}
+        {% assign _closingtagparts = blockquote | split: '</blockquote>'  %}
+        {% assign blockquote = _closingtagparts | first %}
+        {% assign _after_blockquote = _closingtagparts | shift | join: "</blockquote>" %}
+
+        {% capture edited_notes %}{{ edited_notes }}<{% if _strip_prefix %}aside{% else %}blockquote{% endif %}{{ _beforeClasses }}class="{{ _html_class | strip }}"{{ _afterClasses }}>{{ _beforeContent }}{{ blockquote }}</{% if _strip_prefix %}aside{% else %}blockquote{% endif %}>{{ _after_blockquote }}{% endcapture %}
     {% endfor %}
 {% endcapture %}{% assign alertNotesWorkspace = '' %}{{ edited_notes | strip }}
