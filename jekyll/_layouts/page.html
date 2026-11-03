@@ -3,12 +3,12 @@ layout: default
 ---
 <main>
 <header>
-    {% if page.title %}
+    {% if page.title %}{% unless site.unified-docs-theme.options.exclude-page-title %}
     <h1>{{ page.title | escape }}</h1>
-    {% endif %}
+    {% endunless %}{% endif %}
     {%- include custom-header.html -%}
 </header>
-{{ content }}
+{%- include custom-content.html -%}
 <footer>
 {%- include custom-footer.html -%}
 </footer>

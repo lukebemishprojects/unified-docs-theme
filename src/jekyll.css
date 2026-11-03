@@ -213,7 +213,7 @@ main {
     .column-page {
         @container root (min-width: 0) {
             @media not print {
-                @apply block -mx-[min(var(--spacing)*8+25*var(--inexact-ch),var(--spacing)*4+(cqw-85*var(--inexact-ch))/2)] px-4
+                @apply block -mx-[min(var(--spacing)*8+25*var(--inexact-ch),var(--spacing)*4+(100cqw-85*var(--inexact-ch))/2)] px-4
             }
         }
     }

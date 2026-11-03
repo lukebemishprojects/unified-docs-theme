@@ -9,7 +9,7 @@ layout: default
     {%- include custom-header.html -%}
 </header>
 {%capture content%}{% include impl/anchor-headings.html html=content bodySuffix=" " anchorClass="anchor-heading" %}{% endcapture
-    %}{{ content }}
+    %}{%- include custom-content.html -%}
 <footer>
 {%- include custom-footer.html -%}
 </footer>
