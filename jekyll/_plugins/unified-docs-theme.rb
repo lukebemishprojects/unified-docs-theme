@@ -130,7 +130,7 @@ Jekyll::Hooks.register :site, :post_write do |site|
     theme_data = site.config['unified-docs-theme']
     javadoc_data = theme_data&.dig('javadoc') || {}
     javadoc_data.each do |id, data|
-        nav_paths = theme_data ? theme_data['nav_pages'] : nil
+        nav_paths = theme_data ? theme_data['nav-pages'] : nil
         nav_paths = nav_paths ? nav_paths.dup : site.pages.map() do |page|
             {"page" => page.path}
         end + javadoc_data.map() do |id, data|

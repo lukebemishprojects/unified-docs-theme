@@ -1,4 +1,4 @@
-{%- for navpage in include.nav_pages -%}
+{%- for navpage in include.nav-pages -%}
 {%- assign _1_page_url = navpage.permalink -%}
 {%- assign _1_page_title = navpage.title -%}
 {%- if navpage.page -%}
@@ -22,7 +22,7 @@
 {%- if _1_page_title %}
 {%- if _1_page_url == page.url -%}T{%- endif -%}
 {%- if navpage.children and navpage.children.size > 0 -%}
-    {%- include impl/navbar/contains_current.html nav_pages=navpage.children -%}
+    {%- include impl/navbar/contains_current.html nav-pages=navpage.children -%}
 {%- endif -%}
 {%- endif -%}
 {%- endfor -%}

@@ -23,7 +23,7 @@ collections:
     permalink: /categories/:slugified_categories:output_ext
 
 unified-docs-theme:
-  nav_pages:
+  nav-pages:
     - page: index.html
       dropdown: true
       children:

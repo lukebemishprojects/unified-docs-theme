@@ -3,9 +3,9 @@ layout: default
 ---
 <main>
 <header>
-    {% if page.title %}
+    {% if page.title %}{% unless site.unified-docs-theme.options.exclude-post-title %}
     <h1>{{ page.title | escape }}</h1>
-    {% endif %}
+    {% endunless %}{% endif %}
     {%- include custom-header.html -%}
 </header>
 {%capture content%}{% include impl/anchor-headings.html html=content bodySuffix=" " anchorClass="anchor-heading" %}{% endcapture
