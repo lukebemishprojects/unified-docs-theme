@@ -2,7 +2,7 @@
 layout: default
 ---
 <main>
-<header>
+{%capture pagecontent%}<header>
     {% if page.title %}{% unless site.unified-docs-theme.options.exclude-post-title %}
     <h1>{{ page.title | escape }}</h1>
     {% endunless %}{% endif %}
@@ -12,7 +12,7 @@ layout: default
     %}{%- include custom-content.html -%}
 <footer>
 {%- include custom-footer.html -%}
-</footer>
+</footer>{%endcapture%}{%- include custom-page-content.html -%}
 </main>
 {% capture toc_contents -%}{% include impl/toc.html html=content %}{%- endcapture %}
 {%- if toc_contents != blank -%}
